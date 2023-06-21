@@ -187,11 +187,24 @@ def deploy_doc():
     ])
     subp.Popen(args, shell=True).communicate()
     
+def gem_html():
+    config = load_config()
+    # 按照首字母排序文档
+    config['docs'].sort(key=lambda x: x.get('name', ''))
+    # 按照类别分组文档
+    config['cates'] = [    
+        {
+            'name': c,
+            'docs': [d for d in config['docs'] if d['cate'] == c],
+        } for c in config['cates']
+    ]
+
+    index_tmpl = open(d('index.j2'), encoding='utf-8').read()
+    index = jinja2.Template(index_tmpl).render(**config)
+    open(d('index.html'), 'w', encoding='utf-8').write(index)
+
+    
 def main():
-    cmd = sys.argv[1] if len(sys.argv) > 1 else ''
-    if cmd in ['', 'doc']:
-        deploy_doc()
-    if cmd in ['', 'home']:
-        deploy_home()
+    gem_html()
     
 if __name__ == '__main__': main()

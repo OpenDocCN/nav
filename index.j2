@@ -321,7 +321,7 @@ var salongLikes = {"ajaxurl":"http:\/\/docs.apachecn.org\/wp-admin\/admin-ajax.p
 			<ul class="layout_ul" id="salong_tabs_wrap">
 			<!--{% for d in c['docs'] %}-->
 			<!--{% if not d['hidden'] %}-->
-				<!--{% set docLink = d['link'] or '/' + d['name'] + '/' %}-->
+				<!--{% set docLink = 'https://' + d['name'] + '.flygon.net' %}-->
 				<!--{% set docNameCn=d['nameCn'] %}-->
 				<!--{% set docDesc=d['desc'] %}-->
 				<!--{% set docLogo = 'asset/icon/' + d['logo'] + '.png' %}-->
@@ -347,7 +347,8 @@ var salongLikes = {"ajaxurl":"http:\/\/docs.apachecn.org\/wp-admin\/admin-ajax.p
     </div>
 	<!--{% endfor %}-->
         
-	<div class="item-box border" id="home_fcat104">
+	<!--{% if 0 %}-->
+	<div class="item-box border hidden" id="home_fcat104">
 		
 		<div class="module-title border">
 			<span class="title titleColor">组织成员</span>
@@ -376,6 +377,7 @@ var salongLikes = {"ajaxurl":"http:\/\/docs.apachecn.org\/wp-admin\/admin-ajax.p
 		</ul>
 		</div>
 	</div>
+	<!--{% endif %}-->
         
     <div class="item-box border" id="home_link">
         
@@ -401,7 +403,9 @@ var salongLikes = {"ajaxurl":"http:\/\/docs.apachecn.org\/wp-admin\/admin-ajax.p
         </script>
     </div>
 
-    <p>备案信息: {{ icp }} &nbsp;<a title="$s" href="">文档社区</a>&nbsp;| 网站支持：<a class="tip" title="ApacheCN" href="https://apachecn.org/">ApacheCN</a></p>
+    <!--{% if 0 %}-->
+    <p class="hidden">备案信息: {{ icp }} &nbsp;<a title="$s" href="">文档社区</a>&nbsp;| 网站支持：<a class="tip" title="ApacheCN" href="https://apachecn.org/">ApacheCN</a></p>
+    <!--{% endif %}-->
     <div style="text-align:center;margin:0 0 10.5px;">
 		<ins class="adsbygoogle"
 			 style="display:inline-block;width:728px;height:90px"
